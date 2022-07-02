@@ -16,7 +16,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint *.ts*"
+    "publish-storybook": "chromatic --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes"
   },
   "dependencies": {
     "vue": "^3.2.25"
