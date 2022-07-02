@@ -1,6 +1,10 @@
 name: 'Chromatic'
 
-on: push
+on:
+  push:
+    paths:
+      - 'packages/ui/*'
+      - '.github/workflows/chromatic.yaml'
 
 defaults:
   run:
@@ -11,12 +15,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: pnpm/action-setup@v2.0.1
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 6.31.0
-          run_install: false
+
+      - name: Install asdf plugins and tools
+        uses: asdf-vm/actions/install@v1
+
+      # - uses: pnpm/action-setup@v2.0.1
+      #   name: Install pnpm
+      #   id: pnpm-install
+      #   with:
+      #     version: 6.31.0
+      #     run_install: false
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -37,4 +45,7 @@ jobs:
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true
+          # chromatic action ignores global working directory, so to set again here
+          # source: https://github.com/chromaui/chromatic-cli/pull/212
           workingDir: ./packages/ui
