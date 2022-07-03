@@ -13,6 +13,7 @@
     "@astrojs/vue": "^0.1.5",
     "astro": "^1.0.0-beta.47",
     "vue": "^3.2.3",
-    "ui": "workspace:*"
+    "ui": "workspace:*",
+    "unocss-config": "workspace:*"
   }
 }
