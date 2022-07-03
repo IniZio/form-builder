@@ -34,3 +34,5 @@ yarn-error.log*
 
 # vscode
 .vscode/settings.json
+
+__unconfig_vite.config.ts
