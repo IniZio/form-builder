@@ -1,6 +1,6 @@
 {
   "recommendations": [
     "astro-build.astro-vscode",
-    "antfu.unocss"
+    "Vue.volar"
   ]
 }
