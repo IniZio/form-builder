@@ -1,3 +1,5 @@
 <template>
-<button class="bg-red">AB</button>
+  <button class="bg-green">
+    <slot />
+  </button>
 </template>
