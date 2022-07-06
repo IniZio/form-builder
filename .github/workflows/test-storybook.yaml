@@ -1,0 +1,51 @@
+# NOTE: This action is not needed since Chromatic already runs the tests for us,
+# this is more for future reference in case move away from Chromatic
+
+# name: 'Test storybook'
+
+# on:
+#   push:
+#     paths:
+#       - 'packages/ui/**'
+#       - '.github/workflows/test-storybook.yaml'
+
+# defaults:
+#   run:
+#     working-directory: ./packages/ui
+
+# jobs:
+#   test-storybook:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+
+#       - name: Install asdf plugins and tools
+#         uses: asdf-vm/actions/install@v1
+
+#       - name: Get pnpm store directory
+#         id: pnpm-cache
+#         run: |
+#           echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+#       - uses: actions/cache@v3
+#         name: Setup pnpm cache
+#         with:
+#           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+#           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+#           restore-keys: |
+#             ${{ runner.os }}-pnpm-store-
+
+#       - name: Install dependencies
+#         run: pnpm install
+
+#       - name: Install Playwright
+#         run: pnpx -y playwright install --with-deps
+
+#       - name: Build Storybook
+#         run: pnpm build-storybook --quiet
+
+#       - name: Serve Storybook and run tests
+#         run: |
+#           pnpx -y concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+#             "pnpx -y http-server storybook-static --port 6006 --silent" \
+#             "pnpx -y wait-on tcp:6006 && pnpm test-storybook"
