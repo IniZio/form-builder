@@ -10,14 +10,16 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
+    "@storybook/addon-a11y",
   ],
   "framework": "@storybook/vue3",
   "core": {
     "builder": "@storybook/builder-vite"
   },
   "features": {
-    "storyStoreV7": true
+    "storyStoreV7": true,
+    interactionsDebugger: true,
   },
   async viteFinal(config, { configType }) {
     // return the customized config
