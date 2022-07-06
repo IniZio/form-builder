@@ -16,6 +16,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "test-storybook": "test-storybook",
     "publish-storybook": "chromatic --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes"
   },
   "dependencies": {
@@ -25,16 +26,20 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
+    "@storybook/addon-a11y": "^6.5.9",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
     "@storybook/builder-vite": "^0.1.38",
+    "@storybook/jest": "^0.0.10",
+    "@storybook/test-runner": "^0.3.0",
     "@storybook/testing-library": "^0.0.13",
     "@storybook/vue3": "^6.5.9",
     "@vitejs/plugin-vue": "^2.3.3",
     "babel-loader": "^8.2.5",
     "chromatic": "^6.7.0",
+    "jest": "27",
     "typescript": "^4.5.4",
     "unocss": "^0.43.0",
     "unocss-config": "workspace:*",
